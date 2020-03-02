@@ -1,0 +1,8 @@
+
+build-exmple_1-arm_none_eabi_Cortex_M_with_openocd-Debug/Debug/
+
+*.map
+
+*.user
+
+*.91b02da

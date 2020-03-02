@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file    LwIP/LwIP_HTTP_Server_Netconn_RTOS/Inc/stm32f7xx_it.h 
+  * @file    LwIP/LwIP_HTTP_Server_Netconn_RTOS/Inc/stm32f7xx_it.h
   * @author  MCD Application Team
-  * @brief   This file contains the headers of the interrupt handlers.    
+  * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
   * @attention
   *
@@ -22,8 +22,8 @@
 #define __STM32F7xx_IT_H
 
 #ifdef __cplusplus
- extern "C" {
-#endif 
+extern "C" {
+#endif
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f7xx.h"
