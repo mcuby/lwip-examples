@@ -31,6 +31,16 @@ CppApplication {
     property string LwIP: Home + "/Middlewares/Third_Party/LwIP"
     property string BSP: Home + "/Drivers/BSP/STM32746G-Discovery"
     property string Utilities: Home + "/Utilities"
+    property string chargen: Home + "/chargen"
+
+    Group {
+        name: "chargen"
+        prefix: chargen
+        files: [
+            "/*.c",
+            "/*.h"
+        ]
+    }
 
     Group {
         name: "BSP"
@@ -172,6 +182,7 @@ CppApplication {
 
         FreeRTOS + "/Source/include",
         FreeRTOS + "/Source/portable/GCC/ARM_CM7/r0p1",
+        chargen,
 
         CMSIS_RTOS,
 

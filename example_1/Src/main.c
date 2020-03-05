@@ -54,6 +54,7 @@
 #include "app_ethernet.h"
 #include "httpserver-netconn.h"
 #include "lcd_log.h"
+#include "chargen.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -80,6 +81,7 @@ static void CPU_CACHE_Enable(void);
 int main(void)
 {
     /* Configure the MPU attributes as Device memory for ETH DMA descriptors */
+
     MPU_Config();
 
     /* Enable the CPU Cache */
@@ -130,6 +132,8 @@ static void StartThread(void const *argument)
 
     /* Initialize webserver demo */
     http_server_netconn_init();
+
+    chargen_init();
 
     /* Notify user about the network interface config */
     User_notification(&gnetif);
