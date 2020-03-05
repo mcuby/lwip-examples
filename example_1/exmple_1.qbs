@@ -77,9 +77,7 @@ CppApplication {
             "/src/core/*.c",
             "/src/api/*.c",
             "/src/core/ipv4/*.c",
-            "/system/OS/*.c",
-            "/src/apps/httpd/*.c",
-            "/src/apps/httpd/*.h"
+            "/system/OS/*.c"
         ]
         excludeFiles: [
             "/src/apps/httpd/fsdata.c",
@@ -148,6 +146,7 @@ CppApplication {
         prefix: Src
         files: [
             "/*.c",
+            "/../*.c",
             "/*.cpp"
         ]
     }

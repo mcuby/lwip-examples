@@ -52,7 +52,6 @@
 #include "lwip/netif.h"
 #include "lwip/tcpip.h"
 #include "app_ethernet.h"
-#include "httpserver-netconn.h"
 #include "lcd_log.h"
 #include "chargen.h"
 
@@ -130,9 +129,6 @@ static void StartThread(void const *argument)
     /* Initialize the LwIP stack */
     Netif_Config();
 
-    /* Initialize webserver demo */
-    http_server_netconn_init();
-
     chargen_init();
 
     /* Notify user about the network interface config */
@@ -207,7 +203,7 @@ static void BSP_Config(void)
     LCD_LOG_Init();
 
     /* Show Header and Footer texts */
-    LCD_LOG_SetHeader((uint8_t *)"Webserver Application Netconn API");
+    LCD_LOG_SetHeader((uint8_t *)"Example 1 - chargen");
     LCD_LOG_SetFooter((uint8_t *)"STM32746G-DISCO board");
 
     LCD_UsrLog((char *)"  State: Ethernet Initialization ...\n");

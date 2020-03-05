@@ -8,3 +8,5 @@ build-exmple_1-arm_none_eabi_Cortex_M_with_openocd-Debug/Debug/
 *.91b02da
 
 build-exmple_1-stm32-Debug/Debug/
+
+build-exmple_2-stm32-Debug/Debug/
