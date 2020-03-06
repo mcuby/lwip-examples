@@ -58,7 +58,7 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
-//#define USE_DHCP       /* enable DHCP, if disabled static address is used*/
+#define USE_DHCP       /* enable DHCP, if disabled static address is used*/
 
 /*Static IP ADDRESS*/
 #define IP_ADDR0   192

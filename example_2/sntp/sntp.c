@@ -35,6 +35,7 @@
 #include "lwip/opt.h"
 
 #include "sntp.h"
+#include "cmsis_os.h"
 
 //#include "lwip/timers.h"
 #include "lwip/udp.h"
@@ -45,6 +46,7 @@
 
 #include <string.h>
 #include <time.h>
+#include "../Log/lcd_log.h"
 
 #if LWIP_UDP
 
@@ -86,7 +88,7 @@
 
 /** Set this to 1 to allow SNTP_SERVER_ADDRESS to be a DNS name */
 #ifndef SNTP_SERVER_DNS
-#define SNTP_SERVER_DNS             0
+#define SNTP_SERVER_DNS             0//1
 #endif
 
 /** Set this to 1 to support more than one server */
@@ -101,9 +103,9 @@
  */
 #ifndef SNTP_SERVER_ADDRESS
 #if SNTP_SERVER_DNS
-#define SNTP_SERVER_ADDRESS         "pool.ntp.org"
+#define SNTP_SERVER_ADDRESS         "2.by.pool.ntp.org"
 #else
-#define SNTP_SERVER_ADDRESS         "213.161.194.93" /* pool.ntp.org */
+#define SNTP_SERVER_ADDRESS         "185.83.169.27" /* pool.ntp.org */
 #endif
 #endif
 
@@ -308,6 +310,8 @@ sntp_process(u32_t *receive_timestamp)
    */
   time_t t = (ntohl(receive_timestamp[0]) - DIFF_SEC_1900_1970);
 
+  LCD_UsrLog((char *) ctime(&t));
+
 #if SNTP_CALC_TIME_US
   u32_t us = ntohl(receive_timestamp[1]) / 4295;
   SNTP_SET_SYSTEM_TIME_US(t, us);
@@ -438,7 +442,7 @@ sntp_thread(void *arg)
 void
 sntp_init(void)
 {
-  sys_thread_new("sntp_thread", sntp_thread, NULL, DEFAULT_THREAD_STACKSIZE, DEFAULT_THREAD_PRIO);
+  sys_thread_new("sntp_thread", sntp_thread, NULL, 2 * DEFAULT_THREAD_STACKSIZE, DEFAULT_THREAD_PRIO);
 }
 
 #else /* SNTP_SOCKET */
