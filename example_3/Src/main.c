@@ -204,7 +204,7 @@ static void BSP_Config(void)
     LCD_LOG_Init();
 
     /* Show Header and Footer texts */
-    LCD_LOG_SetHeader((uint8_t *)"Example 2 - sntp");
+    LCD_LOG_SetHeader((uint8_t *)"Example 3 - shell");
     LCD_LOG_SetFooter((uint8_t *)"STM32746G-DISCO board");
 
     LCD_UsrLog((char *)"  State: Ethernet Initialization ...\n");
