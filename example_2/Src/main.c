@@ -129,19 +129,19 @@ static void StartThread(void const *argument)
     /* Initialize the LwIP stack */
     Netif_Config();
 
-    sntp_init();
-
     /* Notify user about the network interface config */
     User_notification(&gnetif);
 
 #ifdef USE_DHCP
     /* Start DHCPClient */
-    osThreadDef(DHCP, DHCP_thread, osPriorityBelowNormal, 0, configMINIMAL_STACK_SIZE * 2);
+    osThreadDef(DHCP, DHCP_thread, osPriorityBelowNormal, 0, configMINIMAL_STACK_SIZE * 5);
     osThreadCreate(osThread(DHCP), &gnetif);
 #endif
 
     for (;;) {
         osDelay(1000);
+        sntp_init();
+
         /* Delete the Init Thread */
         osThreadTerminate(NULL);
     }
