@@ -431,8 +431,10 @@ sntp_thread(void *arg)
 {
   LWIP_UNUSED_ARG(arg);
   while(1) {
+
+//    sys_msleep(SNTP_UPDATE_DELAY);
+    osDelay(1000);
     sntp_request(NULL);
-    sys_msleep(SNTP_UPDATE_DELAY);
   }
 }
 
@@ -442,7 +444,7 @@ sntp_thread(void *arg)
 void
 sntp_init(void)
 {
-  sys_thread_new("sntp_thread", sntp_thread, NULL, 2 * DEFAULT_THREAD_STACKSIZE, DEFAULT_THREAD_PRIO);
+  sys_thread_new("sntp_thread", sntp_thread, NULL, 5 * DEFAULT_THREAD_STACKSIZE, DEFAULT_THREAD_PRIO);
 }
 
 #else /* SNTP_SOCKET */
